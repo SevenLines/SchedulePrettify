@@ -1,5 +1,5 @@
-DECLARE @day int
-SELECT @day = 1
+DECLARE @day int, @sem int
+SELECT @day = 1, @sem = 1
 
 SELECT para, fac2 as fac, kurs, aobozn, c
 FROM (
@@ -10,7 +10,7 @@ FROM (
 			when 8 then '»¿Ë—'
 			when 9 then '»ÃË’“'
 			when 10 then '»›'
-			when 144 then '»›”Ëœ'
+			when 144 then '¡Ë”Ô'
 			when 146 then '»»»Ë—√Õ'
 			when 401 then '‘“»'
 			when 521 then 'Ã–÷œ ' end as fac2,  kk.kurs, rtrim(ao.aobozn) as aobozn, 
@@ -25,11 +25,10 @@ FROM (
 	 LEFT JOIN kontgrp kg ON kg.id_7 = rn.kontid
 	 LEFT JOIN vacfac vf ON vf.id_5 = kk.fac
 	WHERE rn.pred in (
-	585, 
-	13572, 
-	35850, 
-	35826
-	) and sem = 2 and afobuch = 1 and day = @day
+		SELECT DISTINCT pred
+		FROM raspnagr
+		WHERE kaf = 218 and sem = @sem
+	) and sem = @sem and afobuch = 1 and day = @day
 )  t
 GROUP BY kurs, fac2, para, aobozn, c
 HAVING fac2 is not null

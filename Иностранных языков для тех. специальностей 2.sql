@@ -1,7 +1,7 @@
 DECLARE @day int, @sem int
-SELECT @day = 1, @sem = 2
+SELECT @day = 1, @sem = 1
 
-SELECT para, fac2 as fac, kurs, aobozn, c
+SELECT para, 0 as even, fac2 as fac, kurs, aobozn, c
 FROM (
 SELECT para, case vf.id_5 when 1 then '»¿ÃË“'
 		when 661 then '»œ»Ë¡'
