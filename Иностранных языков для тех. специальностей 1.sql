@@ -1,5 +1,5 @@
 DECLARE @day int, @sem int
-SELECT @day = 1, @sem = 1
+SELECT @day = 1, @sem = 2
 
 SELECT para, 0 as even, fac2 as fac, kurs, aobozn, c
 FROM (
